@@ -1,6 +1,6 @@
 query FindIssueID {
-  repository(owner:"octocat", name:"Hello-World") {
-    issue(number:349) {
+  repository(owner:"dmccrthy", name:"api-tester") {
+    issue(number: 1) {
       id
     }
   }

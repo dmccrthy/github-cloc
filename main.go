@@ -3,17 +3,21 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
-)
 
-//go:generate go run github.com/Khan/genqlient
+	"github.com/Khan/genqlient/graphql"
+	"github.com/dmccrthy/github-cloc/api"
+)
 
 func main() {
 	ctx := context.Background()
 	client := graphql.NewClient("https://api.github.com/graphql", http.DefaultClient)
-	resp, err := getUser(ctx, client, "benjaminjkraft")
-}
+	res, err := api.FindIssueID(ctx, client)
 
-func Stuff() {
-	fmt.Println("hi")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(res)
 }
